@@ -37,9 +37,9 @@ sudo -u www-data php /var/www/html/admin/cli/install.php \
     --dbname=$MOODLE_DB_NAME \
     --dbuser=$MOODLE_DB_USER \
     --dbpass=$MOODLE_DB_PASS \
-    --fullname=$MOODLE_FULLNAME \
-    --shortname=$MOODLE_SHORTNAME \
-    --summary=$MOODLE_SUMMARY \
+    --fullname="$MOODLE_FULLNAME" \
+    --shortname="$MOODLE_SHORTNAME" \
+    --summary="$MOODLE_SUMMARY" \
     --adminuser=$MOODLE_ADMIN_USER \
     --adminpass=$MOODLE_ADMIN_PASS \
     --adminemail=$MOODLE_ADMIN_EMAIL \
