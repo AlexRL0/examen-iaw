@@ -19,7 +19,6 @@ apt install nfs-common -y
 mount $NFS_SERVER_IP:/var/www/html /var/www/html
 mount $NFS_SERVER_IP:/var/moodledata /var/moodledata
 
-
 # Cambiamos la variable de /etc/fstab
 sed -i '$a\172.31.16.137:/var/www/html /var/www/html  nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0' /etc/fstab
 sed -i '$a\172.31.28.95:/var/www/moodledata /var/www/moodledata nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0' /etc/fstab
