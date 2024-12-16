@@ -22,14 +22,22 @@ wget https://github.com/moodle/moodle/archive/refs/tags/v4.3.1.zip -P /tmp
 unzip /tmp/v4.3.1.zip -d /tmp
 
 # Movemos Moodle al directorio deseado
-mv /tmp/moodle-4.3.1 $MOODLE_DIRECTORY
+mv /tmp/moodle-4.3.1/* $MOODLE_DIRECTORY
 
 # Configuramos permisos para apache
 chown -R www-data:www-data $MOODLE_DIRECTORY
 chmod -R 755 $MOODLE_DIRECTORY
 
+# Configuramos permisos para apache
+chown -R www-data:www-data $MOODLE_DATAROOT
+chmod -R 755 $MOODLE_DATAROOT
+
+#Configuramos las variables max_input_vars
+sed -i "s/;max_input_vars = 1000/max_input_vars = 5000/" /etc/php/8.3/apache2/php.ini
+sed -i "s/;max_input_vars = 1000/max_input_vars = 5000/" /etc/php/8.3/cli/php.ini
+
 #Configuramos moodle
-sudo -u www-data php /var/www/html/moodle/admin/cli/install.php \
+sudo -u www-data php /var/www/html/admin/cli/install.php \
         --lang=$MOODLE_LANG \
         --wwwroot=$MOODLE_WWWROOT \
         --dataroot=$MOODLE_DATAROOT \
@@ -46,15 +54,6 @@ sudo -u www-data php /var/www/html/moodle/admin/cli/install.php \
         --adminemail=$MOODLE_ADMIN_EMAIL \
         --non-interactive \
         --agree-license
-
-
-# Configuramos permisos para apache
-chown -R www-data:www-data $MOODLE_DATAROOT
-chmod -R 755 $MOODLE_DATAROOT
-
-#Configuramos las variables max_input_vars
-sed -i "s/;max_input_vars = 1000/max_input_vars = 5000/" /etc/php/8.3/apache2/php.ini
-sed -i "s/;max_input_vars = 1000/max_input_vars = 5000/" /etc/php/8.3/cli/php.ini
 
 #Reescribir URLs en Apache
 a2enmod rewrite
