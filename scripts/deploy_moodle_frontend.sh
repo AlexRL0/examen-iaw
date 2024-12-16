@@ -19,7 +19,7 @@ apt install unzip -y
 wget https://github.com/moodle/moodle/archive/refs/tags/v4.3.1.zip -P /tmp
 
 # Extraemos Moodle
-unzip /tmp/v4.3.1.zip -C /tmp
+unzip /tmp/v4.3.1.zip -d /tmp
 
 # Movemos Moodle al directorio deseado
 mv /tmp/moodle-4.3.1 $MOODLE_DIRECTORY
@@ -27,8 +27,6 @@ mv /tmp/moodle-4.3.1 $MOODLE_DIRECTORY
 # Configuramos permisos para apache
 chown -R www-data:www-data $MOODLE_DIRECTORY
 chmod -R 755 $MOODLE_DIRECTORY
-chown -R www-data:www-data $MOODLE_DATAROOT
-chmod -R 755 $MOODLE_DATAROOT
 
 #Configuramos moodle
 sudo -u www-data php /var/www/html/moodle/admin/cli/install.php \
@@ -49,6 +47,11 @@ sudo -u www-data php /var/www/html/moodle/admin/cli/install.php \
         --non-interactive \
         --agree-license
 
+
+# Configuramos permisos para apache
+chown -R www-data:www-data $MOODLE_DATAROOT
+chmod -R 755 $MOODLE_DATAROOT
+
 #Configuramos las variables max_input_vars
 sed -i "s/;max_input_vars = 1000/max_input_vars = 5000/" /etc/php/8.3/apache2/php.ini
 sed -i "s/;max_input_vars = 1000/max_input_vars = 5000/" /etc/php/8.3/cli/php.ini
@@ -58,3 +61,6 @@ a2enmod rewrite
 
 #Configuramos las variables del proxy
 sed -i "/\$CFG->admin/a \$CFG->reverseproxy=1;\n\$CFG->sslproxy=1;" /var/www/html/config.php
+
+#Reiniciamos apache
+Systemctl restart apache2
