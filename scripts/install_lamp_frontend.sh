@@ -29,3 +29,9 @@ cp ../php/index.php /var/www/html
 
 #Modificamos el propietario y el grupo del archivo index.php
 chown -R www-data:www-data /var/www/html
+
+#Crear carpeta /var/moodledata
+mkdir var/moodledata
+
+#Modificamos el propietario y el grupo del archivo index.php
+chown -R www-data:www-data /var/moodledata
