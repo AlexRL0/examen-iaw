@@ -12,6 +12,9 @@ apt upgrade -y
 #Instalamos el servidor web Apache
 apt install apache2 -y
 
+#Descargamos la herramienta unzip
+apt install unzip -y
+
 #Habilitamos el módulo rewrite
 a2enmod rewrite
 

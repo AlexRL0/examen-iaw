@@ -15,9 +15,6 @@ rm -rf /var/www/html/*
 # Eliminamos descargas previas de /var/www/hmtl/*
 rm -rf /var/moodledata/*
 
-#Descargamos la herramienta unzip
-apt install unzip -y
-
 # Descargamos el WP-CLI
 wget https://github.com/moodle/moodle/archive/refs/tags/v4.3.1.zip -P /tmp
 
