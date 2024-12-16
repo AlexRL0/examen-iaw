@@ -17,9 +17,11 @@ apt install nfs-kernel-server -y
 
 # hacemos el directorio
 mkdir -p /var/www/html
+mkdir -p /var/moodledata
 
 # Modificamos el grupo y el propietario del directorio
 chown nobody:nogroup /var/www/html
+chown nobody:nogroup /var/moodledata
 
 # copiamos la plantilla exports a /etc/exports
 cp ../nfs/exports /etc/exports
