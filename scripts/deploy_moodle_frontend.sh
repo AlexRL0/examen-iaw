@@ -12,6 +12,9 @@ rm -rf /tmp/v4.3.1.zip*
 # Eliminamos descargas previas de /var/www/hmtl/*
 rm -rf /var/www/html/*
 
+# Eliminamos descargas previas de /var/www/hmtl/*
+rm -rf /var/moodledata/*
+
 #Descargamos la herramienta unzip
 apt install unzip -y
 
@@ -60,6 +63,3 @@ a2enmod rewrite
 
 #Configuramos las variables del proxy
 sed -i "/\$CFG->admin/a \$CFG->reverseproxy=1;\n\$CFG->sslproxy=1;" /var/www/html/config.php
-
-#Reiniciamos apache
-Systemctl restart apache2
