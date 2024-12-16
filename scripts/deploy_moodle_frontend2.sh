@@ -46,5 +46,8 @@ sudo -u www-data php /var/www/html/admin/cli/install.php \
     --non-interactive \
     --agree-license
 
+#Reescribir URLs en Apache
+a2enmod rewrite
+
 #Configurar config.php para poner el proxy inverso
 sed -i "/\$CFG->admin/a \$CFG->reverseproxy=1;\n\$CFG->sslproxy=1;" /var/www/html/config.php
