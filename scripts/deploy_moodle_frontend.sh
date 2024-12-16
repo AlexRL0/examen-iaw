@@ -16,8 +16,6 @@ sudo chown -R www-data:www-data /var/www/html
 sudo chmod -R 755 /var/www/html
 sudo chown -R www-data:www-data /var/moodledata
 sudo chmod -R 755 /var/moodledata
-sudo chown www-data:www-data /var/www/html/admin/cli/install.php
-sudo chmod 755 /var/www/html/admin/cli/install.php
 
 #Configuramos las variables max_input_vars
 sed -i "s/;max_input_vars = 1000/max_input_vars = 5000/" /etc/php/8.3/apache2/php.ini
