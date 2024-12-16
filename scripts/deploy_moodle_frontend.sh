@@ -28,7 +28,7 @@ chown -R www-data:www-data $MOODLE_DATAROOT
 chmod -R 755 $MOODLE_DATAROOT
 
 #Configuramos moodle
-sudo -u www-data php /var/www/html/admin/cli/install.php \
+sudo -u www-data php /var/www/html/moodle/admin/cli/install.php \
         --lang=$MOODLE_LANG \
         --wwwroot=$MOODLE_WWWROOT \
         --dataroot=$MOODLE_DATAROOT \
