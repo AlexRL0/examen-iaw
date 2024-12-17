@@ -42,7 +42,6 @@ sudo -u www-data php /var/www/html/admin/cli/install.php \
     --shortname="$MOODLE_SHORTNAME" \
     --summary="$MOODLE_SUMMARY" \
     --adminuser=$MOODLE_ADMIN_USER \
-    --adminpass=$MOODLE_ADMIN_PASS \
     --adminemail=$MOODLE_ADMIN_EMAIL \
     --non-interactive \
     --agree-license
