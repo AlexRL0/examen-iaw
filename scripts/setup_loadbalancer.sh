@@ -16,7 +16,7 @@ apt upgrade -y
 apt install nginx -y
 
 # Deshabilitamos el enlace simbólico
-#unlink /etc/nginx/sites-enabled/default
+unlink /etc/nginx/sites-enabled/default
 
 # Copiamos el .conf a /etc/nginx/sites-available
 cp ../conf/load_balancer.conf /etc/nginx/sites-available
